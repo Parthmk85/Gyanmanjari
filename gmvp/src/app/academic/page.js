@@ -18,7 +18,7 @@ export default function Academic() {
             backgroundImage: "linear-gradient(rgba(26, 54, 93, 0.8), rgba(26, 54, 93, 0.7)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"
         }}
       >
-        <div className="hero-content">
+        <div className="hero-content reveal">
             <span className="breadcrumb">CURRICULUM</span>
             <h1>Academic Overview</h1>
             <p>Fostering intellect and creativity through a comprehensive educational framework.</p>
@@ -29,21 +29,21 @@ export default function Academic() {
         {/* Sidebar Navigation */}
         <aside className="facilities-sidebar">
             <div 
-                className={`facility-list-item ${activeTab === 'teaching-program' ? 'active' : ''}`} 
+                className={`facility-list-item reveal ${activeTab === 'teaching-program' ? 'active' : ''}`} 
                 onClick={() => setActiveTab('teaching-program')}
             >
                 <div className="facility-icon"><i className="fas fa-chalkboard-teacher"></i></div>
                 Teaching Program
             </div>
             <div 
-                className={`facility-list-item ${activeTab === 'jee' ? 'active' : ''}`} 
+                className={`facility-list-item reveal ${activeTab === 'jee' ? 'active' : ''}`} 
                 onClick={() => setActiveTab('jee')}
             >
                 <div className="facility-icon"><i className="fas fa-atom"></i></div>
                 JEE
             </div>
             <div 
-                className={`facility-list-item ${activeTab === 'neet' ? 'active' : ''}`} 
+                className={`facility-list-item reveal ${activeTab === 'neet' ? 'active' : ''}`} 
                 onClick={() => setActiveTab('neet')}
             >
                 <div className="facility-icon"><i className="fas fa-heartbeat"></i></div>

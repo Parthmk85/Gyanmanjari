@@ -4,7 +4,7 @@ export default function Footer() {
   return (
       <footer>
         <div className="footer-content">
-            <div className="footer-col">
+            <div className="footer-col reveal">
                 <div className="footer-logo">
                     <i className="fas fa-graduation-cap"></i> Gyanmanjari
                 </div>
@@ -19,7 +19,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="footer-col">
+            <div className="footer-col reveal">
                 <h3>Quick Links</h3>
                 <ul className="footer-links-list">
                     <li><Link href="#">Founder Profile</Link></li>
@@ -29,7 +29,7 @@ export default function Footer() {
                 </ul>
             </div>
 
-            <div className="footer-col">
+            <div className="footer-col reveal">
                 <h3>Programs</h3>
                 <ul className="footer-links-list">
                     <li><Link href="#">Teaching Model</Link></li>
@@ -39,7 +39,7 @@ export default function Footer() {
                 </ul>
             </div>
 
-            <div className="footer-col">
+            <div className="footer-col reveal">
                 <h3>Get In Touch</h3>
                 <div className="contact-item">
                     <div className="contact-icon"><i className="fas fa-map-marker-alt"></i></div>
@@ -56,7 +56,7 @@ export default function Footer() {
             </div>
         </div>
 
-        <div className="footer-bottom">
+        <div className="footer-bottom reveal">
             <div className="copyright">
                 &copy; 2026 <strong>GYANMANJARI VIDYAPITH</strong>. All rights reserved.
             </div>

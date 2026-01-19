@@ -47,18 +47,10 @@ export default function Home() {
         setScrolled(false);
       }
 
-      // Reveal
-      const reveals = document.querySelectorAll('.reveal');
-      const windowHeight = window.innerHeight;
-      const elementVisible = 150;
-      reveals.forEach((reveal) => {
-        const elementTop = reveal.getBoundingClientRect().top;
-        if (elementTop < windowHeight - elementVisible) {
-          reveal.classList.add('active');
-        }
-      });
+
 
       // Stats Trigger
+      const windowHeight = window.innerHeight;
       if (statsRef.current && !statsTriggered) {
         const top = statsRef.current.getBoundingClientRect().top;
         if (top < windowHeight - 100) {
@@ -295,19 +287,19 @@ export default function Home() {
       {/* Stats Section */}
       <section className="stats-section" ref={statsRef}>
         <div className="stats-grid">
-            <div className="stat-item">
+            <div className="stat-item reveal">
                 <h2 className="counter">{counts.years}+</h2>
                 <p>Years of Excellence</p>
             </div>
-            <div className="stat-item">
+            <div className="stat-item reveal">
                 <h2 className="counter">{counts.students}+</h2>
                 <p>Students Enrolled</p>
             </div>
-            <div className="stat-item">
+            <div className="stat-item reveal">
                 <h2 className="counter">{counts.faculty}+</h2>
                 <p>Expert Faculty</p>
             </div>
-            <div className="stat-item">
+            <div className="stat-item reveal">
                 <h2 className="counter">{counts.awards}+</h2>
                 <p>Awards Won</p>
             </div>
@@ -316,15 +308,15 @@ export default function Home() {
 
       {/* Academic Programs */}
       <section className="academic-programs reveal">
+        <div className="section-watermark">Academic Excellence</div>
         <div className="section-header">
-            <span className="section-tag" style={{background: 'var(--accent-color)', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '50px', display: 'inline-block'}}>Academic Excellence</span>
             <h2 className="section-title" style={{fontSize: '3rem', marginTop: '1rem', color: '#1a202c'}}>Our Academic <span style={{fontWeight: 700}}>Programs</span></h2>
             <p style={{maxWidth: '600px', margin: '1rem auto', color: '#718096'}}>Tailored educational paths designed to nurture talent and achieve academic milestones.</p>
         </div>
 
         <div className="programs-grid">
             {/* Program 1 */}
-            <div className="program-card-new">
+            <div className="program-card-new reveal">
                 <div className="pill-tag pill-blue">Foundation</div>
                 <div className="card-content">
                     <div className="icon-box icon-blue">
@@ -337,7 +329,7 @@ export default function Home() {
             </div>
 
             {/* Program 2 */}
-            <div className="program-card-new">
+            <div className="program-card-new reveal">
                 <div className="pill-tag pill-green">Core</div>
                 <div className="card-content">
                     <div className="icon-box icon-green">
@@ -350,7 +342,7 @@ export default function Home() {
             </div>
 
             {/* Program 3 */}
-            <div className="program-card-new">
+            <div className="program-card-new reveal">
                 <div className="pill-tag pill-purple">Advanced</div>
                 <div className="card-content">
                     <div className="icon-box icon-purple">
@@ -366,8 +358,8 @@ export default function Home() {
 
       {/* Presence Section */}
       <section className="presence-section">
-        <div className="section-header">
-            <span className="section-tag" style={{background: 'var(--accent-color)', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '50px', display: 'inline-block'}}>Global Reach</span>
+        <div className="section-watermark">Global Reach</div>
+        <div className="section-header reveal">
             <h2 className="section-title" style={{fontSize: '3rem', marginTop: '1rem', color: '#1a202c'}}>Our <span style={{fontWeight: 700}}>Presence</span></h2>
             <p style={{maxWidth: '600px', margin: '1rem auto', color: '#718096'}}>Spreading excellence across multiple locations to empower students everywhere.</p>
         </div>
@@ -426,7 +418,7 @@ export default function Home() {
             {facilities.map((fac, index) => (
                 <div 
                     key={fac.id}
-                    className={`facility-tab ${index === activeFacilityIndex ? 'active' : ''}`}
+                    className={`facility-tab reveal ${index === activeFacilityIndex ? 'active' : ''}`}
                     onClick={() => setActiveFacilityIndex(index)}
                 >
                     <i className={`fas ${fac.icon}`}></i>
@@ -444,8 +436,8 @@ export default function Home() {
       </section>
 
       {/* Gallery Marquee Section */}
-      <section className="gallery-marquee-section reveal">
-        <div className="section-header">
+      <section className="gallery-marquee-section">
+        <div className="section-header reveal">
             <span className="section-tag" style={{background: 'var(--accent-color)', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '50px', display: 'inline-block'}}>Campus Life</span>
             <h2 className="section-title" style={{fontSize: '3rem', marginTop: '1rem', color: '#1a202c'}}>Captured <span style={{fontWeight: 700}}>Moments</span></h2>
         </div>

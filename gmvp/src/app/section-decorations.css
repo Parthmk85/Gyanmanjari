@@ -1,0 +1,102 @@
+
+/* Decorative Backgrounds for White Sections */
+/* Decorative Backgrounds for White Sections */
+.presence-section,
+.academic-programs {
+    position: relative;
+    /* Subtle dot pattern background */
+    background-color: white;
+    background-image: radial-gradient(#e2e8f0 2px, transparent 2px), radial-gradient(#e2e8f0 2px, transparent 2px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px; /* Offset for better pattern */
+}
+
+/* Horizontal Lines Pattern for Specific Sections */
+.facilities-home,
+.gallery-marquee-section {
+    position: relative;
+    background-color: white;
+    background-image: linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+    background-size: 100% 40px; /* Spacing between lines */
+    background-position: 0 0;
+}
+
+/* Add a floating blur blob behind the header */
+.section-header {
+    position: relative;
+    z-index: 1;
+}
+
+.section-header::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; /* Large soft glow */
+    height: 600px;
+    background: radial-gradient(circle, rgba(40, 67, 144, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Decorative "Graffiti" Elements */
+.presence-section::before,
+.academic-programs::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 150px;
+    height: 150px;
+    background-image: radial-gradient(var(--primary-color) 1.5px, transparent 1.5px);
+    background-size: 15px 15px;
+    opacity: 0.1;
+    mask-image: radial-gradient(circle, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle, black 40%, transparent 100%);
+}
+
+.presence-section::after,
+.academic-programs::after {
+    content: '';
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 200px;
+    height: 200px;
+    border: 30px solid rgba(40, 67, 144, 0.03);
+    border-radius: 50%;
+    transform: rotate(-15deg);
+}
+
+/* Stylish Watermark */
+.section-watermark {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Great Vibes', cursive;
+    font-size: 15rem;
+    color: var(--primary-color);
+    opacity: 0.05;
+    z-index: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.presence-section,
+.academic-programs {
+    overflow: hidden; /* Ensure watermark doesn't break layout */
+    position: relative;
+    /* Ensure existing content is above watermark */
+}
+
+.presence-section > *:not(.section-watermark),
+.academic-programs > *:not(.section-watermark) {
+    position: relative;
+    z-index: 2;
+}
