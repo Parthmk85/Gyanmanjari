@@ -4,11 +4,11 @@
 .presence-section,
 .academic-programs {
     position: relative;
-    /* Subtle dot pattern background */
+    /* Horizontal lines pattern - notebook style */
     background-color: white;
-    background-image: radial-gradient(#e2e8f0 2px, transparent 2px), radial-gradient(#e2e8f0 2px, transparent 2px);
-    background-size: 40px 40px;
-    background-position: 0 0, 20px 20px; /* Offset for better pattern */
+    background-image: linear-gradient(to bottom, rgba(40, 67, 144, 0.05) 1px, transparent 1px);
+    background-size: 100% 30px;
+    background-position: 0 0;
 }
 
 /* Horizontal Lines Pattern for Specific Sections */
@@ -41,7 +41,7 @@
     pointer-events: none;
 }
 
-/* Decorative "Graffiti" Elements */
+/* Decorative "Graffiti" Elements - Blue Horizontal Lines */
 .presence-section::before,
 .academic-programs::before {
     content: '';
@@ -50,8 +50,8 @@
     left: 50px;
     width: 150px;
     height: 150px;
-    background-image: radial-gradient(var(--primary-color) 1.5px, transparent 1.5px);
-    background-size: 15px 15px;
+    background-image: linear-gradient(to bottom, var(--primary-color) 1.5px, transparent 1.5px);
+    background-size: 100% 15px;
     opacity: 0.1;
     mask-image: radial-gradient(circle, black 40%, transparent 100%);
     -webkit-mask-image: radial-gradient(circle, black 40%, transparent 100%);

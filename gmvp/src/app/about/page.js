@@ -132,7 +132,7 @@ export default function About() {
             <h2 className="section-title" style={{ marginBottom: '2rem' }}>School Administration</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
               {/* Admin 1 */}
-              <div style={{ background: 'var(--bg-light)', padding: '2rem', borderRadius: '8px', textAlign: 'center' }}>
+              <div style={{ background: 'var(--bg-light)', backgroundImage: 'radial-gradient(rgba(40, 67, 144, 0.08) 1.5px, transparent 1.5px)', backgroundSize: '20px 20px', padding: '2rem', borderRadius: '8px', textAlign: 'center' }}>
                 <img
                   src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
                   style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', marginBottom: '1rem' }}
@@ -145,7 +145,7 @@ export default function About() {
                   management for the campus.</p>
               </div>
               {/* Admin 2 */}
-              <div style={{ background: 'var(--bg-light)', padding: '2rem', borderRadius: '8px', textAlign: 'center' }}>
+              <div style={{ background: 'var(--bg-light)', backgroundImage: 'radial-gradient(rgba(40, 67, 144, 0.08) 1.5px, transparent 1.5px)', backgroundSize: '20px 20px', padding: '2rem', borderRadius: '8px', textAlign: 'center' }}>
                 <img
                   src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
                   style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', marginBottom: '1rem' }}
@@ -166,7 +166,7 @@ export default function About() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {/* Advisor 1 */}
               <div
-                style={{ display: 'flex', gap: '1.5rem', background: 'white', border: '1px solid #eee', padding: '1.5rem', borderRadius: '8px', alignItems: 'center' }}
+                style={{ display: 'flex', gap: '1.5rem', background: 'white', backgroundImage: 'radial-gradient(rgba(40, 67, 144, 0.08) 1.5px, transparent 1.5px)', backgroundSize: '20px 20px', border: '1px solid #eee', padding: '1.5rem', borderRadius: '8px', alignItems: 'center' }}
               >
                 <div
                   style={{ background: 'var(--bg-light)', width: '80px', height: '80px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
@@ -183,7 +183,7 @@ export default function About() {
               </div>
               {/* Advisor 2 */}
               <div
-                style={{ display: 'flex', gap: '1.5rem', background: 'white', border: '1px solid #eee', padding: '1.5rem', borderRadius: '8px', alignItems: 'center' }}
+                style={{ display: 'flex', gap: '1.5rem', background: 'white', backgroundImage: 'radial-gradient(rgba(40, 67, 144, 0.08) 1.5px, transparent 1.5px)', backgroundSize: '20px 20px', border: '1px solid #eee', padding: '1.5rem', borderRadius: '8px', alignItems: 'center' }}
               >
                 <div
                   style={{ background: 'var(--bg-light)', width: '80px', height: '80px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}

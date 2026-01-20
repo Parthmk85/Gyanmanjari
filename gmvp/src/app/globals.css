@@ -36,9 +36,11 @@ html {
 body {
     font-family: var(--font-body);
     color: var(--text-dark);
-    /* Professional Linear Gradient: White -> Off-white -> White -> Off-white shades */
-    background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 25%, #ffffff 50%, #f1f5f9 75%, #ffffff 100%);
-    background-attachment: fixed; /* Ensures the gradient stays essentially as a backdrop */
+    /* Blue Lines Pattern (Horizontal Only) - Notebook Style */
+    background-color: #ffffff;
+    background-image: linear-gradient(rgba(40, 67, 144, 0.05) 1px, transparent 1px);
+    background-size: 100% 30px; /* Line spacing */
+    background-attachment: fixed;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -55,6 +57,12 @@ body {
 * {
     scrollbar-width: none;
     -ms-overflow-style: none;  /* IE and Edge */
+    cursor: none !important; /* Hide default cursor */
+}
+
+/* Ensure links don't show pointer */
+a, button, input, select, textarea {
+    cursor: none !important;
 }
 
 /* Preloader */
@@ -148,36 +156,27 @@ button {
 
 /* Navigation */
 /* Navigation */
+/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: transparent; /* Removed background */
-    backdrop-filter: none; /* Removed blur */
-    padding: 1rem 5%; /* Reduced height */
+    background-color: transparent !important; /* Transparent wrapper to allow split islands */
+    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    box-shadow: none; /* Removed border/shadow */
+    box-shadow: none !important; /* No global shadow, shadows are on islands */
     transition: var(--transition);
+    pointer-events: none; /* Let clicks pass through the gap */
 }
 
-.navbar.scrolled {
-    padding: 0.8rem 5%;
-    background-color: transparent !important; /* Transparent wrapper */
-    box-shadow: none !important;
+.navbar > * {
+    pointer-events: auto; /* Re-enable clicks on islands */
 }
 
-.navbar.scrolled .nav-links {
-    background-color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    box-shadow: var(--shadow-md);
-    transition: var(--transition);
-    align-items: center; /* Vertically center links */
-}
-
+/* Logo Island - 80% Transparency (White/80) */
 .logo {
     font-size: 1.2rem;
     font-weight: 700;
@@ -186,53 +185,70 @@ button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.4); /* More transparent */
-    backdrop-filter: blur(10px); /* Blends with environment */
-    padding: 0.2rem 1rem; /* Reduced height/padding */
+    
+    /* Island Styling */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem 1.5rem;
     border-radius: 50px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Very subtle shadow for blend */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .logo span {
     color: var(--accent-color);
 }
 
+/* Nav Links Island - 50% Transparency (White/50) with Blur */
 .nav-links {
     display: flex;
     gap: 0.3rem;
+    
+    /* Island Styling */
+    background-color: rgba(255, 255, 255, 0.5); /* 50% transparency */
+    padding: 0.5rem 0.5rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Active Button Style (No Underline) */
+/* Active Button Style */
 .nav-links a {
     font-weight: 700;
-    font-size: 1rem;
-    color: white;
+    font-size: 0.95rem;
+    color: var(--text-dark); /* Defined in root, usually dark */
     text-shadow: none;
     position: relative;
-    padding: 0.5rem 1.2rem; /* Add padding for button shape */
-    border-radius: 50px; /* Rounded pill */
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
     transition: var(--transition);
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    background-color: rgba(255, 255, 255, 0.2); /* 20% transparent button */
-    color: white;
+    background-color: var(--primary-color); /* Blue for active pill */
+    color: white; /* White text on active */
+    box-shadow: 0 2px 5px rgba(40, 67, 144, 0.3);
 }
 
-/* Scrolled State Overrides */
-.navbar.scrolled .nav-links a {
-    color: black;
+/* Scrolled State - Islands remain, maybe slightly more opaque?
+   User asked for specific transparency, assuming constant. 
+   We keep the same style for scrolled state to maintain the 'split' look.
+*/
+.navbar.scrolled {
+    padding: 0.8rem 5%;
 }
 
-.navbar.scrolled .nav-links a:hover,
-.navbar.scrolled .nav-links a.active {
-    background-color: rgba(40, 67, 144, 0.1); /* Light blue tint for active on white */
-    color: var(--primary-color);
+.navbar.scrolled .nav-links,
+.navbar.scrolled .logo {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* Deeper shadow on scroll */
 }
 
+/* Adjust Login Page Nav if needed, but Split style works well there too */
 .navbar.login-nav .nav-links a {
-    color: black !important;
+    color: var(--text-dark);
+}
+.navbar.login-nav .nav-links a.active {
+    color: white;
 }
 
 .mobile-menu-btn {
@@ -585,10 +601,45 @@ button {
 
 .quote-section {
     background-color: white;
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
     text-align: center;
     position: relative;
     border-bottom: 1px solid rgba(0,0,0,0.05);
+    overflow: hidden; /* Contain graffiti */
+}
+
+/* Graffiti Decoration 1: Dot Cluster Top-Left */
+.quote-section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 200px;
+    height: 200px;
+    background-image: 
+        radial-gradient(circle, var(--accent-color) 4px, transparent 5px),
+        radial-gradient(circle, var(--primary-color) 2px, transparent 3px);
+    background-size: 30px 30px, 50px 50px;
+    background-position: 0 0, 15px 15px;
+    opacity: 0.15;
+    transform: rotate(15deg);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Graffiti Decoration 2: Geometric Sketch Top-Right */
+.quote-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    border: 4px solid var(--primary-color);
+    opacity: 0.05;
+    transform: rotate(-10deg);
+    border-radius: 20px;
+    z-index: 0;
 }
 
 .quote-icon {
@@ -612,6 +663,8 @@ button {
     display: flex;
     align-items: center;
     background: white;
+    background-image: linear-gradient(to bottom, rgba(40, 67, 144, 0.05) 1px, transparent 1px);
+    background-size: 100% 30px;
     margin-bottom: 4rem;
     border-radius: 8px;
     overflow: hidden;
@@ -685,6 +738,45 @@ button {
     background-color: white;
     padding: 5rem 2rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Legacy Graffiti 1: Bubble Cluster */
+.legacy-section::before {
+    content: '';
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 250px;
+    height: 250px;
+    background-image: 
+        radial-gradient(circle, transparent 20%, var(--accent-color) 21%, var(--accent-color) 23%, transparent 24%),
+        radial-gradient(circle, transparent 30%, var(--primary-color) 31%, var(--primary-color) 33%, transparent 34%);
+    background-size: 60px 60px, 90px 90px;
+    opacity: 0.1;
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+/* Legacy Graffiti 2: Scribble Lines */
+.legacy-section::after {
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    left: 2%;
+    width: 300px;
+    height: 100px;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(40, 67, 144, 0.05) 10px,
+        rgba(40, 67, 144, 0.05) 12px
+    );
+    transform: rotate(-5deg);
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .legacy-grid {
@@ -1319,19 +1411,118 @@ button {
     transform: translateY(0);
 }
 
-/* Footer Redesign */
+/* Animations */
+@keyframes spinSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes floatBlob {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* --- UNIQUE GRAFFITI THEMES --- */
+
+/* 1. Footer Graffiti: "Network Waves" */
 footer {
     background: linear-gradient(to bottom, #ffffff 0%, #dbeafe 15%, #284390 100%);
     color: white;
     padding: 6rem 5% 2rem;
     font-family: var(--font-body);
     position: relative;
-    clip-path: none; /* Removed clip-path to allow blend */
+    overflow: hidden; /* Contain graffiti */
 }
 
-/* White Wave Decoration REMOVED for clean blend */
 footer::before {
-    display: none;
+    content: '';
+    position: absolute;
+    top: -150px;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, transparent 30%, rgba(255,255,255,0.03) 31%, rgba(255,255,255,0.03) 50%, transparent 51%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+footer::after {
+    content: '';
+    position: absolute;
+    bottom: 50px;
+    left: -50px;
+    width: 300px;
+    height: 300px;
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.03) 75%, transparent 75%, transparent);
+    background-size: 30px 30px;
+    transform: rotate(20deg);
+    pointer-events: none;
+}
+
+/* 2. Hero Graffiti: "Orbit" */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: 5%;
+    width: 200px;
+    height: 200px;
+    border: 3px dashed rgba(255,255,255,0.15);
+    border-radius: 50%;
+    animation: spinSlow 30s linear infinite;
+    pointer-events: none;
+}
+
+/* 3. Stats Graffiti: "Organic Blob" */
+.stats-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 10% 20%, rgba(40, 67, 144, 0.02) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stats-section::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, rgba(40,67,144,0.05), transparent);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: floatBlob 10s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* 4. Facilities Sidebar Graffiti: "Tech Corner" */
+.facilities-sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 50px 50px 0;
+    border-color: transparent var(--primary-color) transparent transparent;
+    opacity: 0.1;
+    pointer-events: none;
 }
 
 .footer-content {
@@ -1803,6 +1994,8 @@ footer::before {
 /* Facility Content Area */
 .facility-content-area {
     background: white;
+    background-image: linear-gradient(to bottom, rgba(40, 67, 144, 0.05) 1px, transparent 1px);
+    background-size: 100% 30px;
     border-radius: 12px;
     padding: 2rem;
     box-shadow: var(--shadow-sm);
@@ -1835,6 +2028,8 @@ footer::before {
 
 .feature-box {
     background: var(--bg-light);
+    background-image: linear-gradient(to bottom, rgba(40, 67, 144, 0.05) 1px, transparent 1px);
+    background-size: 100% 30px;
     padding: 1.5rem;
     border-radius: 8px;
     text-align: center;
@@ -1860,3 +2055,52 @@ footer::before {
     filter: blur(0);
 }
 
+/* Shared Blue Dots Pattern for Cards (Requested for 'all elements') */
+/* Shared Blue Dots Pattern for Cards (Requested for 'all elements') */
+/* UPDATED: User requested to CLEAR elements (make them white) and put Lines on Section Background */
+.program-card-new, 
+.presence-card, 
+.gallery-card,
+.facility-tab,
+.legacy-item {
+    background-image: none;
+    background-color: white; 
+    box-shadow: var(--shadow-sm); 
+}
+
+/* Explicit Section Backgrounds - Transparent to show Body Lines */
+.academic-programs,
+.presence-section,
+.facilities-home {
+    background-color: transparent;
+    background-image: none;
+}
+
+/* Navbar Sticky and Shadow Styles with Slide-Down Animation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: transparent;
+    transform: translateY(0);
+}
+
+.navbar.scrolled {
+    box-shadow: none;
+    background: transparent;
+    animation: slideDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

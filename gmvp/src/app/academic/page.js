@@ -29,21 +29,21 @@ export default function Academic() {
         {/* Sidebar Navigation */}
         <aside className="facilities-sidebar">
             <div 
-                className={`facility-list-item reveal ${activeTab === 'teaching-program' ? 'active' : ''}`} 
+                className={`facility-list-item ${activeTab === 'teaching-program' ? 'active' : ''}`} 
                 onClick={() => setActiveTab('teaching-program')}
             >
                 <div className="facility-icon"><i className="fas fa-chalkboard-teacher"></i></div>
                 Teaching Program
             </div>
             <div 
-                className={`facility-list-item reveal ${activeTab === 'jee' ? 'active' : ''}`} 
+                className={`facility-list-item ${activeTab === 'jee' ? 'active' : ''}`} 
                 onClick={() => setActiveTab('jee')}
             >
                 <div className="facility-icon"><i className="fas fa-atom"></i></div>
                 JEE
             </div>
             <div 
-                className={`facility-list-item reveal ${activeTab === 'neet' ? 'active' : ''}`} 
+                className={`facility-list-item ${activeTab === 'neet' ? 'active' : ''}`} 
                 onClick={() => setActiveTab('neet')}
             >
                 <div className="facility-icon"><i className="fas fa-heartbeat"></i></div>

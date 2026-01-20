@@ -150,32 +150,27 @@ export default function Home() {
     {
       id: 1,
       image: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
-      title: "Empowering Future Leaders",
-      subtitle: "Experience world-class education at Gyanmanjari"
+      title: "Gyanmanjari Campus",
+      subtitle: "Center of Excellence"
     },
-    {
-      id: 2,
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
-      title: "State-of-the-art Facilities",
-      subtitle: "Labs, Libraries, and Sports Complexes designed for growth"
-    },
+    
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1524578271613-d550eacf6090?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
-      title: "Holistic Development",
-      subtitle: "Nurturing minds through academics and beyond"
+      image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+      title: "Modern Library",
+      subtitle: "Knowledge Hub"
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
-      title: "Community & Culture",
-      subtitle: "Fostering a sense of belonging and cultural values"
+      image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+      title: "Interactive Learning",
+      subtitle: "Smart Classrooms"
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
-      title: "Excellence in Sports",
-      subtitle: "Building character and discipline through athletics"
+      image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+      title: "Advanced Science Labs",
+      subtitle: "Practical Innovation"
     }
   ];
 
@@ -218,19 +213,28 @@ export default function Home() {
 
       {/* Hero Section */}
       <header className="relative w-full h-screen overflow-hidden">
-        {/* Static Background Layer */}
-        <div className="absolute inset-0 w-full h-full z-0">
-             <Image 
-               src={SplashBg} 
-               alt="Campus" 
-               fill 
-               className="object-cover"
-               priority
-             />
-        </div>
+        {/* White Graffiti Background */}
+        <div className="absolute inset-0 w-full h-full z-0 bg-white overflow-hidden">
+             {/* Graffiti 1: Large Faint Circle */}
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-3xl"></div>
+             
+             {/* Graffiti 2: Dot Grid (Top Left) */}
+             <div className="absolute top-20 left-10 opacity-10">
+                 <div className="grid grid-cols-6 gap-3">
+                    {[...Array(36)].map((_, i) => (
+                        <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#284390]"></div>
+                    ))}
+                 </div>
+             </div>
 
-        {/* Black Overlay */}
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
+             {/* Graffiti 3: Dashed Ring (Bottom Right) */}
+             <div className="absolute bottom-10 right-10 w-64 h-64 border-4 border-dashed border-[#284390]/10 rounded-full animate-spin-slow"></div>
+
+             {/* Graffiti 4: Scribble (Bottom Left) */}
+             <svg className="absolute bottom-20 left-20 w-48 h-48 opacity-5" viewBox="0 0 200 200">
+                 <path d="M10,10 Q50,100 90,50 T190,100" fill="none" stroke="#284390" strokeWidth="5" />
+             </svg>
+        </div>
 
         {/* Floating Slider (Foreground) */}
         <div className="absolute z-20 overflow-hidden flex items-center justify-center"
@@ -309,9 +313,8 @@ export default function Home() {
       {/* Academic Programs */}
       <section className="academic-programs reveal">
         <div className="section-watermark">Academic Excellence</div>
-        <div className="section-header">
-            <h2 className="section-title" style={{fontSize: '3rem', marginTop: '1rem', color: '#1a202c'}}>Our Academic <span style={{fontWeight: 700}}>Programs</span></h2>
-            <p style={{maxWidth: '600px', margin: '1rem auto', color: '#718096'}}>Tailored educational paths designed to nurture talent and achieve academic milestones.</p>
+        <div className="text-center mb-12">
+            <h2 className="facilities-title">Our Academic Programs</h2>
         </div>
 
         <div className="programs-grid">
@@ -359,9 +362,8 @@ export default function Home() {
       {/* Presence Section */}
       <section className="presence-section">
         <div className="section-watermark">Global Reach</div>
-        <div className="section-header reveal">
-            <h2 className="section-title" style={{fontSize: '3rem', marginTop: '1rem', color: '#1a202c'}}>Our <span style={{fontWeight: 700}}>Presence</span></h2>
-            <p style={{maxWidth: '600px', margin: '1rem auto', color: '#718096'}}>Spreading excellence across multiple locations to empower students everywhere.</p>
+        <div className="text-center mb-12 reveal">
+            <h2 className="facilities-title">Our Presence</h2>
         </div>
 
         <div className="marquee-container">
@@ -411,14 +413,14 @@ export default function Home() {
 
       {/* Facilities Home Section */}
       <section className="facilities-home reveal">
-        <span className="facilities-tag">World-Class Infrastructure</span>
+        <div className="section-watermark">Infrastructure</div>
         <h2 className="facilities-title">Facilities for a Brighter Future</h2>
 
         <div className="facilities-tabs-wrapper">
             {facilities.map((fac, index) => (
                 <div 
                     key={fac.id}
-                    className={`facility-tab reveal ${index === activeFacilityIndex ? 'active' : ''}`}
+                    className={`facility-tab ${index === activeFacilityIndex ? 'active' : ''}`}
                     onClick={() => setActiveFacilityIndex(index)}
                 >
                     <i className={`fas ${fac.icon}`}></i>
@@ -437,8 +439,8 @@ export default function Home() {
 
       {/* Gallery Marquee Section */}
       <section className="gallery-marquee-section">
+        <div className="section-watermark">Campus Life</div>
         <div className="section-header reveal">
-            <span className="section-tag" style={{background: 'var(--accent-color)', color: 'white', padding: '0.5rem 1.5rem', borderRadius: '50px', display: 'inline-block'}}>Campus Life</span>
             <h2 className="section-title" style={{fontSize: '3rem', marginTop: '1rem', color: '#1a202c'}}>Captured <span style={{fontWeight: 700}}>Moments</span></h2>
         </div>
 
